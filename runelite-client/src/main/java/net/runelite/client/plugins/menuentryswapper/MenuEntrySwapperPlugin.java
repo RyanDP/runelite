@@ -544,6 +544,33 @@ public class MenuEntrySwapperPlugin extends Plugin
 		{
 			swap("pick-lots", option, target, true);
 		}
+        else if (option.equals("withdraw-all") && shiftModifier)
+        {
+            swap("withdraw-1", option, target, true);
+        }
+        else if (option.equals("deposit-all") && shiftModifier)
+        {
+            swap("deposit-1", option, target, true);
+        }
+        else if (option.equals("deposit-all") && target.contains("pouch"))
+        {
+            swap("fill", option, target, true);
+        }
+        else if (option.equals("remove"))
+        {
+            if (target.contains("construct"))
+            {
+                swap("tele to poh", option, target, true);
+            }
+            else if (target.contains("crafting"))
+            {
+                swap("teleport", option, target, true);
+            }
+            else if (target.contains("dueling"))
+            {
+                swap("duel arena", option, target, true);
+            }
+        }
 		else if (config.shiftClickCustomization() && shiftModifier && !option.equals("use"))
 		{
 			Integer customOption = getSwapConfig(eventId);
