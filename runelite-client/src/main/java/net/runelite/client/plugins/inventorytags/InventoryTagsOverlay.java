@@ -43,8 +43,6 @@ public class InventoryTagsOverlay extends WidgetItemOverlay
 	{
 		this.itemManager = itemManager;
 		this.plugin = plugin;
-		showOnEquipment();
-		showOnInventory();
 	}
 
 	@Override

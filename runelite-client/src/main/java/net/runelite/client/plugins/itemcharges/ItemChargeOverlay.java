@@ -51,8 +51,6 @@ class ItemChargeOverlay extends WidgetItemOverlay
 	{
 		this.itemChargePlugin = itemChargePlugin;
 		this.config = config;
-		showOnInventory();
-		showOnEquipment();
 	}
 
 	@Override
