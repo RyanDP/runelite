@@ -26,7 +26,6 @@ package net.runelite.api.widgets;
 
 import java.awt.Rectangle;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.ToString;
 import net.runelite.api.Point;
 
@@ -35,34 +34,55 @@ import net.runelite.api.Point;
  */
 @AllArgsConstructor
 @ToString
-@Getter
 public class WidgetItem
 {
+	private final int id;
+	private final int quantity;
+	private final int index;
+	private final Rectangle canvasBounds;
+
 	/**
-	 * The ID of the item represented.
+	 * Gets the ID of the item represented.
 	 *
+	 * @return the items ID
 	 * @see net.runelite.api.ItemID
 	 */
-	private final int id;
+	public int getId()
+	{
+		return id;
+	}
+
 	/**
-	 * The quantity of the represented item.
+	 * Gets the quantity of the represented item.
+	 *
+	 * @return the items quantity
 	 */
-	private final int quantity;
+	public int getQuantity()
+	{
+		return quantity;
+	}
+
 	/**
-	 * The index position of this WidgetItem inside its parents
+	 * Gets the index position of this WidgetItem inside its parents
 	 * WidgetItem array.
 	 *
+	 * @return the index in the parent widget
 	 * @see Widget#getWidgetItems()
 	 */
-	private final int index;
+	public int getIndex()
+	{
+		return index;
+	}
+
 	/**
-	 * The area where the widget is drawn on the canvas.
+	 * Gets the area where the widget is drawn on the canvas.
+	 *
+	 * @return the occupied area of the widget
 	 */
-	private final Rectangle canvasBounds;
-	/**
-	 * The widget which contains this item.
-	 */
-	private final Widget widget;
+	public Rectangle getCanvasBounds()
+	{
+		return canvasBounds;
+	}
 
 	/**
 	 * Gets the upper-left coordinate of where the widget is being drawn
