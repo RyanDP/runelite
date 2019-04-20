@@ -109,9 +109,12 @@ import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import net.runelite.rs.api.RSActor;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
+=======
+>>>>>>> parent of 8bf22ef40... Merge pull request #8462 from Adam-/master+widgetitemoverlay
 =======
 >>>>>>> parent of 8bf22ef40... Merge pull request #8462 from Adam-/master+widgetitemoverlay
 import net.runelite.rs.api.RSChatLineBuffer;
