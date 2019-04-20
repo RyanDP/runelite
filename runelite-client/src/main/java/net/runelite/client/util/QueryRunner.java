@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, Adam <Adam@sigterm.info>
+ * Copyright (c) 2017, Tomas Slusny <slusnucky@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,57 +22,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.ui.overlay;
+package net.runelite.client.util;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.util.List;
-import lombok.AccessLevel;
-import lombok.Setter;
-import net.runelite.api.widgets.WidgetItem;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import net.runelite.api.Client;
+import net.runelite.api.Query;
 
-public abstract class WidgetItemOverlay extends Overlay
+@Singleton
+public class QueryRunner
 {
-	@Setter(AccessLevel.PACKAGE)
-	private OverlayManager overlayManager;
+	@Inject
+	private Client client;
 
-	protected WidgetItemOverlay()
+	@SuppressWarnings("unchecked")
+	public <T> T[] runQuery(Query query)
 	{
-		super.setPosition(OverlayPosition.DYNAMIC);
-		super.setPriority(OverlayPriority.LOW);
-		super.setLayer(OverlayLayer.ABOVE_WIDGETS);
-	}
-
-	public abstract void renderItemOverlay(Graphics2D graphics, int itemId, WidgetItem itemWidget);
-
-	@Override
-	public Dimension render(Graphics2D graphics)
-	{
-		final List<WidgetItem> itemWidgets = overlayManager.getItemWidgets();
-		for (WidgetItem widget : itemWidgets)
-		{
-			renderItemOverlay(graphics, widget.getId(), widget);
-		}
-		return null;
-	}
-
-	// Don't allow setting position, priority, or layer
-
-	@Override
-	public void setPosition(OverlayPosition position)
-	{
-		throw new IllegalStateException();
-	}
-
-	@Override
-	public void setPriority(OverlayPriority priority)
-	{
-		throw new IllegalStateException();
-	}
-
-	@Override
-	public void setLayer(OverlayLayer layer)
-	{
-		throw new IllegalStateException();
+		return (T[]) query.result(client);
 	}
 }
